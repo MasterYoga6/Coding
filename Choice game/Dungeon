@@ -1,0 +1,173 @@
+#A game prototype i guess 
+
+import simple_colors
+import termcolor
+import sys
+import time
+import random
+#Making a list for the playable classes
+
+actual_class = ["Knight","Wizard","Archer","Rogue"]
+
+#Counting the ultimate 
+Ultimate = 0
+#Displaying the playable classes
+print(simple_colors.yellow("The classes are:"))
+print(simple_colors.blue("Knight"))
+print(simple_colors.cyan("Wizard"))
+print(simple_colors.green("Archer"))
+print(simple_colors.magenta("Rogue"))
+
+#While loop to not accept wrong input
+while True:
+    class_choose = input("Choose a class: ").capitalize()
+    if class_choose not in actual_class:
+        continue
+    else:
+        break
+#Character stats
+
+Ricar = {
+    "health" : 100,
+    "power" : 50,
+    "Attack1":"Slash",
+    "Attack2":"Stab",
+    "Attack3":"Ultimate",
+    }
+Mag = {
+    "health" : 100,
+    "power" : 80,
+    "Attack1": "Fireball",
+    "Attack2": "Ice spikes",
+    "Attack3": "Ultimate"
+    }
+Strelec = {
+    "health" : 100,
+    "power" : 60, 
+    "Attack1" : "Arrow rain",
+    "Attack2" : "Direct arrow",
+    "Attack3" : "Ultimate",
+    }
+Mangal = {
+    "health" : 100,
+    "power" : 60,
+    "Attack1" : "Heart stab",
+    "Attack2" : "Stab",
+    "Attack3" : "Ultimate"
+    }
+
+if class_choose == "Knight":
+    class_choose = Ricar
+elif class_choose == "Wizard":
+    class_choose = Mag
+elif class_choose == "Archer":
+    class_choose = Strelec
+elif class_choose == "Rogue":
+    class_choose = Mangal
+
+#Setting up a welcome message ! 
+print(simple_colors.yellow("Let the Adventure begin !"))
+
+print("")
+def print_slow(str, color = "0"):
+    colors = {
+        "red": "\033[1;31;40m",
+        "green": "\033[1;32;40m",
+        "yellow": "\033[1;33;40m",
+        "blue": "\033[1;34;40m",
+        "purple": "\033[1;35;40m",
+        "cyan": "\033[1;36;40m",
+        "white": "\033[1;37;40m"
+    }
+
+    color_code = colors.get(color, "\033[1;31;40m")
+    reset_code = "\033[0m"
+    
+    #Slowly introducing the intro to the dungeon to the player
+    for letter in str:
+        sys.stdout.write(color_code + letter + reset_code)
+        sys.stdout.flush()
+        time.sleep(0.0)
+        
+print_slow("""A deep misterous voice says:'So you've chosen the
+path of a adventurer ay ? lets see if you can manage to defeat this dungeon!
+""")
+
+#Introducing the level to the player 
+print("\n")
+print(simple_colors.red(" ! LEVEL ONE !"))
+print("\n")
+
+#Displaying text when the first encounter appears
+dungeon_text = simple_colors.black("You hear a faint sound from the dark corridor that you are in")
+for let in dungeon_text:
+    sys.stdout.write(let)
+    sys.stdout.flush()
+    time.sleep(0.0)
+
+text_from_dungeon1 = simple_colors.black("\nA quiet steps get closer to you and its an enemy !")
+for det in text_from_dungeon1:
+    sys.stdout.write(det)
+    sys.stdout.flush()
+    time.sleep(0.0)
+
+#Setting up first mobs to fight
+
+list_of_weak_mobs = ["Goblin","Mutated Rat","Bandit"]
+
+random_mob = random.randint(0,2)
+
+goblen = {
+    "health": 100,
+    "power" : 10
+     }
+rato = {
+    "health" : 100,
+    "power" : 10,
+    }
+bandidos = {
+    "health" : 100,
+    "power" : 20
+    }
+
+print("\n")
+enemy_chosen = list_of_weak_mobs[random_mob]
+#Displaying the enemy 
+print(simple_colors.yellow("Its a:"),enemy_chosen)
+
+#Making the enemy into a dictionary
+if enemy_chosen == "Goblin":
+    enemy_chosen = goblen
+elif enemy_chosen == "Mutated Rat":
+    enemy_chosen = rato
+elif enemy_chosen == "Bandit":
+    enemy_chosen = bandidos    
+
+print("\n")
+
+#Displaying character abilities and color of the chacters
+list_of_values = list(class_choose.values())
+
+shown_abilities = list() 
+
+for abil in list_of_values:
+    if type(abil) != int:
+        shown_abilities.append(abil)
+
+print(simple_colors.yellow("Your abilities are:"))
+for juk in shown_abilities:
+    print(simple_colors.black(juk), end=",")
+    
+#Asking which action to perform,and preventing wrong input   
+print("\n")
+while True:
+    ability = int(input(simple_colors.yellow("Which ability to perform ?(0-2): ")))
+    if ability > 2 or ability < 0:
+        continue
+    else: 
+        break
+
+chosen_ability = shown_abilities[ability]
+    
+print("\n")
+print(simple_colors.yellow("Using:"),chosen_ability)
