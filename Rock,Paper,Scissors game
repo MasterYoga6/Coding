@@ -1,0 +1,49 @@
+import simple_colors
+import random
+
+#Rock,Paper,Scissors game
+
+#Computer choices
+while True:
+    choices = ["rock","paper","scissors"]
+
+    #Player choose
+    #While loop to prevent wrong output 
+    while True:
+        player_choose = input("Choose an option: ").lower()
+        if player_choose not in choices:
+            continue
+        else:
+            break
+
+    #Displaying the choices of both computer and player
+    computer = random.choice(choices)
+    print(simple_colors.yellow("The computer chose: "),computer)
+    print(simple_colors.yellow("The player choce: "),player_choose)
+
+    if player_choose == computer:
+        print(simple_colors.green("It's a tie !"))
+    #If player chooses rock
+    elif player_choose == "rock":
+        if computer == "scissors":
+            print("The player wins !")
+        if computer == "paper":
+            print("The player looses !")
+    #if player chooses paper
+    elif player_choose == "paper":
+        if computer == "rock":
+            print("The player wins !")
+        if computer == "scissors":
+            print("The player looses !")
+    #If player chooses scissors
+    elif player_choose == "scissors":
+        if computer == "paper":
+            print("The player wins !")
+        if computer == "rock":
+            print("The player looses !")
+
+    play_again = input("Do you want to play again ?(yes/no)").lower()
+
+    if play_again != "yes":
+        break
+print("Good game !")
