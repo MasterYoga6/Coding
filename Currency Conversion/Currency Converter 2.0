@@ -32,7 +32,7 @@ while True:
            continue
        else:
            break
-    
+
     #Calculating from leva to euro
     if ask_change_currency == "euro" and ask_currency == "leva":
         ask_change_currency = 1.95
