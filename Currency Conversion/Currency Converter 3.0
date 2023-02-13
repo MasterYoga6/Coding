@@ -1,0 +1,87 @@
+import simple_colors
+
+#Asking for how much money to transfer 
+while True:
+    while True:
+        ask_money = input(simple_colors.green("How much money do you want to transfer: "))
+        if ask_money.isnumeric():
+            ask_money = float(ask_money)
+            break
+        else:
+            continue
+
+    given_currency = ("euro","leva","pound")
+
+    #Displaying the only avaiable currencies
+    print(simple_colors.green("Only these currencies are available: ")+simple_colors.yellow("Euro/Leva/Pound"))
+
+    while True:
+        #Asking what currency to start with
+        ask_currency = input(simple_colors.green("Which Currency do you choose to transfer from: ")).lower()
+        if ask_currency not in given_currency:
+            continue
+        else:
+            break
+        
+    while True:
+        ask_second_currency = input(simple_colors.green("What currency to transfer it: "))
+        if ask_second_currency not in given_currency:
+            continue
+        else:
+            break
+        
+    # Leva to euro
+    if ask_currency == "leva" and ask_second_currency == "euro":
+        def leva_to_euro(given_numb):
+            sums = 0.51 * given_numb
+            return sums
+
+        print(simple_colors.yellow("Total amount: "),leva_to_euro(ask_money))
+
+    # Euro to leva  
+    elif ask_currency == "euro" and ask_second_currency == "leva":
+        def euro_to_leva(given_numb):
+            sums = 1.95 * given_numb
+            return sums
+        
+        print(simple_colors.yellow("Total amount: "),euro_to_leva(ask_money))
+
+    #Leva to Pound
+    elif ask_currency == "leva" and ask_second_currency == "pound":
+        def leva_to_pound(given_numb):
+            sums = 0.45 * given_numb
+            return sums
+        
+        print(simple_colors.yellow("Total amount: "),leva_to_pound(ask_money))
+
+    #Pound to Leva
+    elif ask_currency == "pound" and ask_second_currency == "leva":
+        def pound_to_leva(given_numb):
+            sums = 2.21 * given_numb
+            return sums
+        
+        print(simple_colors.yellow("Total amount: "),pound_to_leva(ask_money))
+
+    #Euro to Pound
+    elif ask_currency == "euro" and ask_second_currency == "pound":
+        def euro_to_pound(given_numb):
+            sums = 0.88 * given_numb
+            return sums
+        
+        print(simple_colors.yellow("Total amount: "),euro_to_pound(ask_money))
+
+    #Pound to euro
+    elif ask_currency == "pound" and ask_second_currency == "euro":
+        def pound_to_euro(given_numb):
+            sums = 1.13 * given_numb
+            return sums
+        
+        print(simple_colors.yellow("Total amount: "),pound_to_euro(ask_money))
+
+    #Restarting the converter for another input 
+    ask_again_to_change = input(simple_colors.yellow("Do you want to try another number ? (Yes/No): ")).lower()
+
+    if ask_again_to_change != "yes":
+            break
+    
+print(simple_colors.yellow("Thanks for using this converter !"))
