@@ -1,0 +1,45 @@
+#Guess the number
+import random
+import simple_colors
+
+#Counting the tries,3 is the limit
+try_count = 0
+
+while True:
+    
+    #Avaiable numbers to guess 
+    list_of_numbers = ["1","2","3","4","5","6","7","8","9","10"]
+
+    #Generating computer random choice
+    random_generator = random.choice(list_of_numbers)
+
+    #Asking the player for an input
+    while True:
+        ask_player = input(simple_colors.green("Choose a number between 1-10: "))
+
+        if ask_player not in list_of_numbers:
+            continue
+        else:
+            break  
+             
+    try_count += 1
+    print("\n")
+    print(simple_colors.green("You chose: "),ask_player)
+    print(simple_colors.green("Actuall number: "),random_generator)
+    print(simple_colors.green("Tries: "),try_count)
+    
+    if ask_player == random_generator:
+        print("You win !")
+        
+        ask1 = input("Do you want to play again ?(yes/no: )").lower()
+        if ask1 != "yes":
+           break
+    
+    elif try_count == 4:
+        print(simple_colors.yellow("Out of tries!"))
+        
+        ask2 = input(simple_colors.yellow("Do you want to play again ?(yes/no: )")).lower()
+        if ask2 != "yes":
+           break
+
+print(simple_colors.yellow("Good game!"))
