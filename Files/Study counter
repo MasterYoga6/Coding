@@ -1,0 +1,15 @@
+#Study time counter
+
+#Importing modules
+import os
+import shutil
+from datetime import datetime
+
+#First line of the text
+line = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+#Appending next lines
+second_text = ("Day: ")
+
+with open("days_studied.txt","a") as file1:
+    file1.write("\n" + second_text + line)
