@@ -1,0 +1,43 @@
+import os
+import shutil
+
+#Creating the file
+text = "Hello i have been created today!"
+
+with open("today.txt","w") as file:
+    file.write(text)
+
+#Moving the file
+source = "today.txt"
+destination = "C:\\Users\\GIGABYTE\\Desktop\\today.txt"
+
+try:
+    if os.path.exists(destination):
+        print("it already exists")
+    else:
+        os.replace(source,destination)
+
+except FileExistsError:
+    print(" the file already exists")
+except FileNotFoundError:
+    print("can't find the file")
+
+#Adding more text to the file
+new_text = "\nHello this is new information!"
+
+with open("C:\\Users\\GIGABYTE\\Desktop\\today.txt","a") as new_file:
+    new_file.write(new_text)
+
+#Moving the file again
+
+new_destination = "C:\\Users\\GIGABYTE\\Desktop\\Server\\today.txt"
+
+try:
+    if os.path.exists(new_destination):
+        print(" the file is already there")
+    else:
+        os.replace(destination,new_destination)
+except FileExistsError:
+    print("file already exists")
+except FileNotFoundError:
+    print("file not found in there!")
