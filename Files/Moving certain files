@@ -1,0 +1,14 @@
+
+import os
+import shutil
+
+source = "D:\\Snimki"
+destination = "D:\\Overwatch"
+
+files = os.listdir(source)
+
+for file in files:
+    if file.endswith(".jpg") or file.endswith(".gif"):
+        source_path = os.path.join(source,file)
+        destination_path = os.path.join(destination,file)
+        shutil.move(source_path,destination_path)
