@@ -1,0 +1,74 @@
+import simple_colors
+#Quiz game 
+def new_game():
+    
+    guesses = []
+    correct_guesses = 0
+    question_num = 1
+    
+    for key in questions:
+        print("------------------------------")
+        print(key)
+        for i in options[question_num-1]:
+            print(i)
+        guess = input("Enter (A, B, C, or D): ").upper()
+        guesses.append(guess)
+        
+        question_num += 1
+        correct_guesses += check_answers(questions.get(key),guess)
+        
+    display_score(correct_guesses, guesses)
+
+def check_answers(answer, guess):
+    if answer == guess:
+        print(simple_colors.green("Correct"))
+        return 1
+    else:
+        print(simple_colors.red("Wrong"))
+        return 0
+
+def display_score(correct_guesses, guesses):
+    print("------------------------")
+    print("RESULTS")
+    print("------------------------")
+    
+    print("Answers: ", end=" ")
+    for i in questions:
+        print(questions.get(i), end=" ")
+    print()
+
+    print("Guesses: ", end=" ")
+    for i in guesses:
+        print(i, end=" ")
+    print()
+
+    score = int((correct_guesses/len(questions))*100)
+    print("Your score is: "+str(score)+"%")
+
+def play_again():
+    response = input("Do you want to play again ? (yes or no): ")
+    response = response.upper()
+    
+    if response == "YES":
+        return True
+    else:
+        return False
+
+#Setting up questions
+questions = { 
+    "Who created Star Wars ?:":"C",
+    "What did J.R.R Tolkien write ?:":"A",
+    "Should you put pineapple on pizza ?:":"D",
+    "Who created calculus ?:" : "B"
+}
+options =   [["A. Eugene Wesley Roddenberry" ,"B. Frank Herbert" ,"C. George Lucas" ,"D. James Cameron"],
+            ["A. 'The Hobbit'" ,"B. Dune" ,"C. '1984'" ,"D. ", "C. Star Trek 1"],
+            ["A. Yes", "B. Why not", "C.What's pizza ?", "D. No"],
+            ["A. Albert Einstein", "B. Isaac Newton","C. Pythagoras", "D. Archimedes"]]
+
+new_game()
+
+while play_again():
+    new_game()
+
+print("Goodbye !")
