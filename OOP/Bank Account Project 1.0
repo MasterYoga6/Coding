@@ -1,0 +1,32 @@
+import simple_colors
+class Account:
+
+    def __init__(self,name,pincode,code_number,balance):
+        self.name = name
+        self.pincode = pincode
+        self.code_number = code_number
+        self.balance = balance
+
+    def withdraw(self):
+        ask = float(input("How much do you want to withdraw ?: "))
+        if ask > self.balance:
+            print("insufficient funds")
+        else:
+            self.balance -= ask
+            print(f"Withdrawal of {ask} was successful. New balance is {self.balance}")
+
+    def deposit(self):
+        ask1 = float(input("How much do you want to deposit?: "))
+        if ask1 < 0:
+            print("Not enough to deposit")
+        else:
+            self.balance += ask1
+            print(f"Deposit of {ask1} was successful. New balance is {self.balance}")
+           
+person1 = Account("Slav",80085,123456,1000)
+
+person1.deposit()
+print("You current balance is:",person1.balance)
+person1.withdraw()
+print("You current balance is:",person1.balance)
+   
