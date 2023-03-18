@@ -1,0 +1,32 @@
+#Choosing numbers 
+first_numb = int(input("Choose a number: "))
+second_numb = int(input("Choose a second number: "))
+
+#Choosing action to perform with the numbers
+action = input("Choose an action to perfrom between add/sub/div/mul/intdiv/remind/power: ")
+
+
+def calc(numb1,numb2):
+    if action == "add":
+        add = "Addition: ", numb1 + numb2
+        return add
+    elif action == "sub":
+        sub = ("Subtraction: ", numb1 - numb2)
+        return sub
+    elif action == "mul":
+        mul = ("Multiplication: ", numb1*numb2)
+        return mul
+    elif action == "div":
+        div = ("Division: ", numb1/numb2)
+        return div
+    elif action == "intdiv":
+        int_div = ("Int division: ", numb1//numb2)
+        return int_div    
+    elif action == "remind":
+        remind = ("Remainder: ", numb1%numb2)
+        return remind
+    elif action == "power":
+        power = ("Raised by power: ", numb1**numb2)
+        return power
+
+print(calc(numb1=first_numb,numb2=second_numb))
