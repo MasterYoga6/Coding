@@ -1,0 +1,20 @@
+#Calculator 1.0
+
+import math
+
+x = int(input("Enter a number here: "))
+y = int(input("Enter a second number here: "))
+c = input("Choose an option to perform: ")
+
+if c == "mult":
+    result_1 = x*y
+    print(result_1)
+elif c == "divi":
+    result_2 = x/y 
+    print(result_2)
+elif c == "add":
+    result_3 = x + y
+    print(result_3)
+elif c == "subt":
+    result_4 = x - y
+    print(result_4)
