@@ -1,0 +1,93 @@
+#New calculator
+while True:
+    
+    #Displaying the actions that the user can use
+    actions = """
+            Addition(1), Subtraction(2), 
+            Multiplication(3), Division(4), 
+            Raise Power(5), Floor Division(Rounded)(6)
+            Modulus(Remainder)(7)"""
+
+    print(actions)
+    
+    #List of the actions 
+    list_actions = ["1","2","3","4","5","6","7"]
+    
+    #Another while loop to counter any wrong input
+    while True:
+        
+        ask_action_perform = (input("Which of these actions to perform: "))
+        if ask_action_perform not in list_actions:
+            continue
+        else:
+            break
+        
+    #Addition
+    if ask_action_perform == "1":
+        
+        ask_first_number = float(input("Enter a number to use: "))
+        ask_second_number = float(input("Enter a second number to use: "))
+        
+        add = lambda x, y: x + y
+        print(add(ask_first_number,ask_second_number))
+    
+    #Subtraction
+    elif ask_action_perform == "2":
+         
+         ask_first_number = float(input("Enter a number to use: "))
+         ask_second_number = float(input("Enter a second number to use: "))
+         
+         sub = lambda x, y: x - y
+         print(sub(ask_first_number,ask_second_number))
+
+    #Multiplication
+    elif ask_action_perform == "3":
+
+        ask_first_number = float(input("Enter a number to use: "))
+        ask_second_number = float(input("Enter a second number to use: "))
+        
+        mult = lambda x, y: x * y
+        print(mult(ask_first_number,ask_second_number))
+
+    #Division
+    elif ask_action_perform == "4":
+
+        ask_first_number = float(input("Enter a number to use: "))
+        ask_second_number = float(input("Enter a second number to use: "))
+        
+        div = lambda x, y: x / y
+        print(div(ask_first_number,ask_second_number))
+
+    #Raise Power
+    elif ask_action_perform == "5":
+         
+         ask_first_number = float(input("Enter a number to use: "))
+         
+         raise_pow = lambda x: x ** 2
+         print(raise_pow(ask_first_number))
+    
+    #Floor division
+    elif ask_action_perform == "6":
+        
+        ask_first_number = float(input("Enter a number to use: "))
+        ask_second_number = float(input("Enter a second number to use: "))
+        
+        flor_division = lambda x, y: x // y
+        print(flor_division(ask_first_number,ask_second_number))
+
+    #Modulus(Remainder)
+    elif ask_action_perform == "7":
+        
+        ask_first_number = float(input("Enter a number to use: "))
+        ask_second_number = float(input("Enter a second number to use: "))
+
+        mod = lambda x, y: x % y
+        print(mod(ask_first_number,ask_second_number))
+
+    
+    exit = input("Do you want to continue(yes,no): ").lower()
+    
+    if exit != "yes":
+        break
+    
+print("Use me again! ")
